@@ -1,23 +1,23 @@
 import { Component, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
+import { ShoppingListService } from '../../shared/shoppingList.service';
 
 @Component({
   selector: 'app-shopping-list-edit',
   templateUrl: './shopping-list-edit.component.html',
-  styleUrls: ['./shopping-list-edit.component.css']
+  styleUrls: ['./shopping-list-edit.component.css'],
 })
 export class ShoppingListEditComponent implements OnInit {
 
   @ViewChild('ComponentNameInput') componentName;
   @ViewChild('ComponentAmountInput') componentAmount;
 
-  @Output() saveShoppingList = new EventEmitter<{ componentName: string, componentAmount: number }>();
-  constructor() { }
+  constructor(private shoppingListService: ShoppingListService) { }
 
   ngOnInit() {
   }
 
   onAddClick() {
-    this.saveShoppingList.emit({ componentName: this.componentName.nativeElement.value, componentAmount: this.componentAmount.nativeElement.value })
+    this.shoppingListService.setingredient({ name: this.componentName.nativeElement.value, amount: this.componentAmount.nativeElement.value });
   }
 
 
