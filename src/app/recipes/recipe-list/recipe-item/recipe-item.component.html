@@ -1,9 +1,14 @@
-<a class="list-group-item clearfix mb-2" style="cursor: pointer;" [routerLink]="[recipeID]">
-    <div class="pull-left">
-        <h4 class="list-group-item-heading">{{recipe.name}}</h4>
-        <p class="list-group-item-text">{{recipe.descrebtion}}</p>
+<a class="list-group-item clearfix mb-2" style="cursor: pointer;" [routerLink]="[recipeID]" routerLinkActive="active">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7">
+                <h4 class="list-group-item-heading">{{recipe.name}}</h4>
+                <p class="list-group-item-text">{{recipe.descrebtion}}</p>
+            </div>
+            <div class="col-md-5">
+                <img src="{{ recipe.imagePath }}" alt="{{recipe.name}}" class="img-responsive" style="max-height: 80px; max-width:200px ;">
+            </div>
+
+        </div>
     </div>
-    <span class="pull-right">
-        <img src="{{ recipe.imagePath }}" alt="{{recipe.name}}" class="img-responsive" style="max-height: 50px;">
-    </span>
 </a>

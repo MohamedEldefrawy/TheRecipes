@@ -5,6 +5,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { Routes, RouterModule } from "@angular/router";
 import { NoRecipeSelectedComponent } from "./recipes/no-recipe-selected/no-recipe-selected.component";
 import { RecipeDetailComponent } from "./recipes/recipe-detail/recipe-detail.component";
+import { EditRecipeComponent } from "./recipes/edit-recipe/edit-recipe.component";
 
 
 const appRouts: Routes = [
@@ -12,7 +13,9 @@ const appRouts: Routes = [
     {
         path: 'recipes', component: RecipesComponent, children: [
             { path: '', component: NoRecipeSelectedComponent },
-            { path: ':id', component: RecipeDetailComponent }]
+            { path: 'new', component: EditRecipeComponent },
+            { path: ':id', component: RecipeDetailComponent },
+            { path: ':id/edit', component: EditRecipeComponent }]
     },
     { path: 'shoppingList', component: ShoppingListComponent },
     { path: 'not-found', component: PageNotFoundComponent },

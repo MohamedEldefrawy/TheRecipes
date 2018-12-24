@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <img src="{{recipe.imagePath}}" alt="{{recipe.name}}" class="img-responsive" style="max-height: 200px">
+        <img src="{{recipe.imagePath}}" alt="{{recipe.name}}" class="img-responsive" style="max-height: 400px;">
     </div>
 </div>
 
@@ -17,7 +17,7 @@
             <button type="button" class="btn btn-primary dropdown-toggle">Manage Recipe <span class="carret"></span></button>
             <ul class="dropdown-menu">
                 <li class="dropdown-item"><a (click)="onAddClick()" style="cursor: pointer;">Add to Shopping list</a></li>
-                <li class="dropdown-item" style="cursor: pointer;"><a>Edit</a></li>
+                <li class="dropdown-item" style="cursor: pointer;" (click)="onEdit()"><a>Edit</a></li>
                 <li class="dropdown-item" style="cursor: pointer;"><a>Delete</a></li>
             </ul>
         </div>
