@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
@@ -15,6 +14,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { routing } from './app-routing-module';
 import { NoRecipeSelectedComponent } from './recipes/no-recipe-selected/no-recipe-selected.component';
 import { EditRecipeComponent } from './recipes/edit-recipe/edit-recipe.component';
+import { RecipeListService } from './shared/recipeList.service';
 
 
 @NgModule({
@@ -30,12 +30,13 @@ import { EditRecipeComponent } from './recipes/edit-recipe/edit-recipe.component
     RecipesComponent,
     PageNotFoundComponent,
     NoRecipeSelectedComponent,
-    EditRecipeComponent],
+    EditRecipeComponent
+  ],
   imports: [
     BrowserModule,
     routing,
   ],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService, RecipeListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
