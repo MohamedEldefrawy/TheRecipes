@@ -15,6 +15,7 @@ import { routing } from './app-routing-module';
 import { NoRecipeSelectedComponent } from './recipes/no-recipe-selected/no-recipe-selected.component';
 import { EditRecipeComponent } from './recipes/edit-recipe/edit-recipe.component';
 import { RecipeListService } from './shared/recipeList.service';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { RecipeListService } from './shared/recipeList.service';
   imports: [
     BrowserModule,
     routing,
+    FormsModule
   ],
   providers: [ShoppingListService, RecipeListService],
   bootstrap: [AppComponent]

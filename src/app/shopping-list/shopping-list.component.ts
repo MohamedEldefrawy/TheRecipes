@@ -26,6 +26,11 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     });
   }
 
+  //Get the selected ingredient index and assign it to the service
+  onIngredientClick(ingredient: Ingredient) {
+    this.shoppingListService.selectedIngredientIndex = this.ingredients.indexOf(ingredient);
+  }
+
   ngOnDestroy() {
     this.subscribtion.unsubscribe();
   }

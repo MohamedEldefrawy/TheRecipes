@@ -1,4 +1,4 @@
-import { Output } from "@angular/core";
+import { Output, Input } from "@angular/core";
 import { Ingredient } from "./ingredient.model";
 import { Subject } from "rxjs";
 
@@ -9,6 +9,9 @@ export class ShoppingListService {
     // ingredientChanged = new EventEmitter<Ingredient[]>();
 
     ingredientChanged = new Subject<Ingredient[]>();
+
+    @Input() selectedIngredientIndex: number = null;
+
 
     @Output()
     setingredient(ingredient: Ingredient) {
@@ -29,4 +32,14 @@ export class ShoppingListService {
         return this.ingredients.slice();
     }
 
+    @Output()
+    deleteIngredient(index: number) {
+        if (this.selectedIngredientIndex != null) {
+            this.ingredients.splice(index, 1);
+            this.ingredientChanged.next(this.ingredients.slice());
+        }
+        else {
+            alert("Please Select an Ingredient");
+        }
+    }
 }
