@@ -1,11 +1,18 @@
 <div class="row">
-    <div class="col-xs-10">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
         <app-shopping-list-edit></app-shopping-list-edit>
         <hr>
-        <ul class="list-group">
-            <a class="list-group-item" style="cursor: pointer;" *ngFor="let ingredient of ingredients" (click)="onIngredientClick(ingredient)">
-                {{ingredient.name}} ({{ingredient.amount}})
-            </a>
-        </ul>
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="list-group">
+                    <a class="list-group-item" style="cursor: pointer;" *ngFor="let ingredient of ingredients" (click)="onIngredientClick(ingredient)">
+                                {{ingredient.name}} ({{ingredient.amount}})
+                    </a>
+                </ul>
+            </div>
+        </div>
+
     </div>
+    <div class="col-md-2"></div>
 </div>

@@ -2,20 +2,20 @@
     <div class="col-xs-12">
         <form (ngSubmit)="onSubmit()" #shoppingListForm="ngForm">
             <div class="row">
-                <div class="col-sm-5">
+                <div class="col-md-8">
                     <label for="name">Name</label>
-                    <input type="text" name="name" class="form-control" id="name" ngModel>
+                    <input type="text" name="name" class="form-control" id="name" ngModel required>
                 </div>
-                <div class="col-sm-2 form-group">
+                <div class="col-md-4 form-group">
                     <label for="amount">Amount</label>
-                    <input type="number" name="amount" class="form-control" id="amount" ngModel>
+                    <input type="number" name="amount" class="form-control" id="amount" ngModel required pattern="[0-9]+[1-9]*$">
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12">
-                    <button class="btn btn-success" type="submit">Add</button>
-                    <button class="btn btn-danger" type="button" (click)="onDelete()">Delete</button>
-                    <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
+                <div class="col-md-12">
+                    <button class="btn btn-success ml-2" type="submit" [disabled]="!shoppingListForm.valid">Add</button>
+                    <button class="btn btn-danger ml-2" type="button" (click)="onDelete()">Delete</button>
+                    <button class="btn btn-primary ml-2" type="button" (click)="onClear()">Clear</button>
                 </div>
             </div>
         </form>
