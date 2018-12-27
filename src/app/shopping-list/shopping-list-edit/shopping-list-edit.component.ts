@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ShoppingListService } from '../../shared/shoppingList.service';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -8,16 +8,23 @@ import { Subscription } from 'rxjs';
   templateUrl: './shopping-list-edit.component.html',
   styleUrls: ['./shopping-list-edit.component.css'],
 })
-export class ShoppingListEditComponent implements OnInit {
+export class ShoppingListEditComponent implements OnInit, OnDestroy {
 
   // Refrence of the form
   @ViewChild('shoppingListForm') formRefrence: NgForm;
 
-  subscribe: Subscription;
+  subscribtion: Subscription;
+
+  editedItemIndex: number;
+  editMode = false;
 
   constructor(private shoppingListService: ShoppingListService) { }
 
   ngOnInit() {
+    this.subscribtion = this.shoppingListService.selectedIndexChanged.subscribe(((index: number) => {
+      this.editMode = true;
+      this.editedItemIndex = index;
+    }));
   }
 
   onSubmit() {
@@ -27,13 +34,22 @@ export class ShoppingListEditComponent implements OnInit {
 
   // Delete the selected Ingredient
   onDelete() {
-    this.shoppingListService.deleteIngredient(this.shoppingListService.selectedIngredientIndex);
-    this.shoppingListService.selectedIngredientIndex = null;
+    // this.shoppingListService.deleteIngredient(this.shoppingListService.selectedIngredientIndex);
+    // this.shoppingListService.selectedIngredientIndex = null;
+
+    this.shoppingListService.deleteIngredient(this.editedItemIndex);
+
   }
+
 
   // Clear the UI
   onClear() {
     this.formRefrence.reset();
+  }
+
+  ngOnDestroy() {
+    this.subscribtion.unsubscribe();
+
   }
 
 }

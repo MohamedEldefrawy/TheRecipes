@@ -10,7 +10,10 @@ export class ShoppingListService {
 
     ingredientChanged = new Subject<Ingredient[]>();
 
-    @Input() selectedIngredientIndex: number = null;
+    // @Input() selectedIngredientIndex: number = null;
+
+    //Using Observables
+    selectedIndexChanged = new Subject<number>();
 
 
     @Output()
@@ -34,12 +37,15 @@ export class ShoppingListService {
 
     @Output()
     deleteIngredient(index: number) {
-        if (this.selectedIngredientIndex != null) {
-            this.ingredients.splice(index, 1);
-            this.ingredientChanged.next(this.ingredients.slice());
-        }
-        else {
-            alert("Please Select an Ingredient");
-        }
+        // if (this.selectedIngredientIndex != null) {
+        //     this.ingredients.splice(index, 1);
+        //     this.ingredientChanged.next(this.ingredients.slice());
+        // }
+        // else {
+        //     alert("Please Select an Ingredient");
+        // }
+
+        this.ingredients.splice(index, 1);
+        this.ingredientChanged.next(this.ingredients.slice());
     }
 }
