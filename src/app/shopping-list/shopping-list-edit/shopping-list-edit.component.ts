@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ShoppingListService } from '../../shared/shoppingList.service';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Component({
   selector: 'app-shopping-list-edit',
@@ -13,23 +14,43 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
   // Refrence of the form
   @ViewChild('shoppingListForm') formRefrence: NgForm;
 
-  subscribtion: Subscription;
+  selectedIndexsubscribtion: Subscription;
+  // editedIngredientSubscribtion:Subscription;
 
   editedItemIndex: number;
   editMode = false;
 
+  editedIngredient: Ingredient;
+
   constructor(private shoppingListService: ShoppingListService) { }
 
   ngOnInit() {
-    this.subscribtion = this.shoppingListService.selectedIndexChanged.subscribe(((index: number) => {
+    this.selectedIndexsubscribtion = this.shoppingListService.selectedIndexChanged.subscribe(((index: number) => {
       this.editMode = true;
       this.editedItemIndex = index;
+      this.editedIngredient = this.shoppingListService.getIngredientbyID(this.editedItemIndex);
+
+      this.formRefrence.setValue({
+        name: this.editedIngredient.name,
+        amount: this.editedIngredient.amount.toString()
+      })
     }));
+
+
+
   }
 
   onSubmit() {
-    this.shoppingListService.setingredient({ name: this.formRefrence.controls.name.value, amount: this.formRefrence.controls.amount.value })
-    this.formRefrence.reset();
+    if (!this.editMode) {
+      this.shoppingListService.setingredient({ name: this.formRefrence.controls.name.value, amount: this.formRefrence.controls.amount.value })
+      this.formRefrence.reset();
+    }
+    else {
+      this.shoppingListService.updateIngredient(this.editedItemIndex,
+        ({ name: this.formRefrence.controls.name.value, amount: this.formRefrence.controls.amount.value }));
+      this.editMode = false;
+      this.formRefrence.reset();
+    }
   }
 
   // Delete the selected Ingredient
@@ -45,10 +66,11 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
   // Clear the UI
   onClear() {
     this.formRefrence.reset();
+    this.editMode = false;
   }
 
   ngOnDestroy() {
-    this.subscribtion.unsubscribe();
+    this.selectedIndexsubscribtion.unsubscribe();
 
   }
 

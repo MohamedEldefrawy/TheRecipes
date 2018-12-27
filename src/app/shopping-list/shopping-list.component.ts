@@ -11,12 +11,12 @@ import { Subscription } from 'rxjs';
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
 
-  subscribtion: Subscription;
-
   constructor(private shoppingListService: ShoppingListService) {
   }
 
   ingredients: Ingredient[];
+  subscribtion: Subscription;
+  editedIngredient: Ingredient;
 
   ngOnInit() {
     this.ingredients = this.shoppingListService.getIngredients();
@@ -29,7 +29,6 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   //Get the selected ingredient index and assign it to the service
   onIngredientClick(index: number) {
     // this.shoppingListService.selectedIngredientIndex = index;
-
     this.shoppingListService.selectedIndexChanged.next(index);
   }
 

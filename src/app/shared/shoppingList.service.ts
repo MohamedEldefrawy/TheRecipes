@@ -1,4 +1,3 @@
-import { Output, Input } from "@angular/core";
 import { Ingredient } from "./ingredient.model";
 import { Subject } from "rxjs";
 
@@ -15,27 +14,35 @@ export class ShoppingListService {
     //Using Observables
     selectedIndexChanged = new Subject<number>();
 
-
-    @Output()
     setingredient(ingredient: Ingredient) {
         this.ingredients.push(ingredient);
         // this.ingredientChanged.emit(this.ingredients.slice());
         this.ingredientChanged.next(this.ingredients.slice())
     }
 
-    @Output()
     setIngredients(ingredients: Ingredient[]) {
         this.ingredients.push(...ingredients);
         // this.ingredientChanged.emit(this.ingredients.slice());
         this.ingredientChanged.next(this.ingredients.slice());
     }
 
-    @Output()
+
     getIngredients() {
         return this.ingredients.slice();
     }
 
-    @Output()
+
+    getIngredientbyID(index: number) {
+        return this.ingredients[index];
+    }
+
+    updateIngredient(index: number, ingredient: Ingredient) {
+        this.ingredients[index] = ingredient;
+
+        this.ingredientChanged.next(this.ingredients.slice());
+    }
+
+
     deleteIngredient(index: number) {
         // if (this.selectedIngredientIndex != null) {
         //     this.ingredients.splice(index, 1);
