@@ -64,8 +64,8 @@ export class EditRecipeComponent implements OnInit {
 
   onNewIngredientClick() {
     (<FormArray>this.recipeForm.get('ingredients')).push(new FormGroup({
-      'ingredientName': new FormControl(null, Validators.required),
-      'ingredientCount': new FormControl(null, [Validators.required,
+      'name': new FormControl(null, Validators.required),
+      'amount': new FormControl(null, [Validators.required,
       Validators.pattern(/^[1-9]+[0-9]*$/)])
     }));
   }
@@ -79,17 +79,11 @@ export class EditRecipeComponent implements OnInit {
     // };
 
     if (this.editMode) {
-      // console.log(<Ingredient[]>this.recipeForm.get('ingredients').value);
-      console.log(this.recipeListService.getRecipesByIndex(this.recipeID));
-
       this.recipeListService.updateRecipe(this.recipeID, this.recipeForm.value)
-      console.log(this.recipeListService.getRecipesByIndex(this.recipeID));
       this.recipeForm.reset();
       this.editMode = false;
     }
     else {
-      console.log(this.recipeForm.value);
-      console.log(this.recipeForm.get('ingredients').value.ingredients[0]);
       this.recipeListService.setRecipt(this.recipeForm.value);
     }
   }
