@@ -32,7 +32,7 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
 
       this.formRefrence.setValue({
         name: this.editedIngredient.name,
-        amount: this.editedIngredient.amount.toString()
+        amount: this.editedIngredient.amount
       })
     }));
 

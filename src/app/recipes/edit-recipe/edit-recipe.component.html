@@ -4,16 +4,16 @@
         <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
             <div class="row">
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-success mr-2">Save</button>
+                    <button type="submit" class="btn btn-success mr-2" [disabled]="!recipeForm.valid">Save</button>
                     <button type="button" class="btn btn-danger">Cancel</button>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="name" class="mt-2">Name</label>
                         <input type="text" formControlName="name" id="name" class="form-control">
-                        <label for="imagePath">Image URL</label>
+                        <label for="imagePath" class="mt-2">Image URL</label>
                         <input type="text" formControlName="imagePath" id="imagePath" class="form-control">
                     </div>
                 </div>
@@ -25,8 +25,8 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <label for="description">Description</label>
-                    <textarea formControlName="description" id="description" rows="6" class="form-control mb-3"></textarea>
+                    <label for="description" class="mt-2">Description</label>
+                    <textarea formControlName="description" id="describtion" rows="6" class="form-control"></textarea>
                 </div>
             </div>
 
@@ -35,14 +35,21 @@
                 <div class="col-md-12" formArrayName="ingredients">
                     <div class="row" *ngFor="let ingredientControl of recipeForm.get('ingredients').controls; let i = index" [formGroupName]="i">
                         <div class="col-md-8">
-                            <input type="text" formControlName='ingredientName' class="form-control">
+                            <input type="text" formControlName='name' class="form-control mt-2">
                         </div>
                         <div class="col-md-2">
-                            <input type="number" formControlName='ingredientCount' class="form-control">
+                            <input type="number" formControlName='amount' class="form-control mt-2">
                         </div>
                         <div class="col-md-2">
-                            <button type="button" class="btn btn-danger">X</button>
+                            <button type="button" class="btn btn-danger mt-2">X</button>
                         </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <button type="button" class="btn btn-success" (click)="onNewIngredientClick()">New Ingredient</button>
+                        </div>
+
                     </div>
                 </div>
             </div>

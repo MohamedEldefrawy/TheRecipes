@@ -1,16 +1,14 @@
 import { Ingredient } from "../shared/ingredient.model";
 
 export class Recipe {
-    id: number;
     name: string;
-    descrebtion: string;
+    description: string;
     imagePath: string;
     ingredients: Ingredient[];
 
-    constructor(id: number, name: string, desc: string, imagePath: string, ingredient: Ingredient[]) {
-        this.id = id;
+    constructor(name: string, desc: string, imagePath: string, ingredient: Ingredient[]) {
         this.name = name;
-        this.descrebtion = desc;
+        this.description = desc;
         this.imagePath = imagePath;
         this.ingredients = ingredient;
     }
