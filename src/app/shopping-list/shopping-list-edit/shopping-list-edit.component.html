@@ -16,9 +16,9 @@
                 <div class="col-md-12 ">
                     <button class="btn btn-success ml-2" type="submit" [disabled]="!shoppingListForm.valid">{{ editMode ? 'Update':'Add'}}</button>
 
-                    <button class="btn btn-danger ml-2" type="butto " (click)="onDelete()" [hidden]="!editMode">Delete</button>
+                    <button class="btn btn-danger ml-2" type="button" (click)="onDelete()" [hidden]="!editMode">Delete</button>
 
-                    <button class="btn btn-primary ml-2 " type="button " (click)="onClear() ">Clear</button>
+                    <button class="btn btn-primary ml-2 " type="button" (click)="onClear()">Clear</button>
                 </div>
             </div>
         </form>

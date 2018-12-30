@@ -12,15 +12,15 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="name" class="mt-2">Name</label>
-                        <input type="text" formControlName="name" id="name" class="form-control">
+                        <input type="text" formControlName="name" id="name" class="form-control" #imgName>
                         <label for="imagePath" class="mt-2">Image URL</label>
-                        <input type="text" formControlName="imagePath" id="imagePath" class="form-control">
+                        <input type="text" formControlName="imagePath" id="imagePath" class="form-control" #imgPath>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <img src="" alt="" class="img-responsive">
+                    <img [src]="imgPath.value" [alt]="imgName.value" class="img-responsive mt-2">
                 </div>
             </div>
             <div class="row">
