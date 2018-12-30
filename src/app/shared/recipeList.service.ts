@@ -20,7 +20,7 @@ export class RecipeListService {
     // List of recipes
     private recipes: Recipe[] = [new Recipe('teriyaki chicken', 'yummi', 'https://api.norecipes.com/wp-content/uploads/2018/08/teriyaki-chicken-recipe_007.jpg', [new Ingredient('Chicken', 1), new Ingredient('French fries', 20)]),
     new Recipe('beef burger', ' This is a simle test', 'https://img.taste.com.au/Gtj94o4m/w643-h428-cfill-q90/taste/2016/11/homestyle-beef-burger-81486-1.jpeg', [new Ingredient('Beef burger', 1), new Ingredient('lettuce', 1), new Ingredient('Cheese', 1)])];
-  
+
     getRecipes() {
         return this.recipes.slice();
     }
@@ -36,6 +36,11 @@ export class RecipeListService {
 
     updateRecipe(index: number, recipe: Recipe) {
         this.recipes[index] = recipe;
+        this.recipeChanged.next(this.recipes.slice());
+    }
+
+    deleteRecipe(index: number) {
+        this.recipes.splice(index, 1);
         this.recipeChanged.next(this.recipes.slice());
     }
 }

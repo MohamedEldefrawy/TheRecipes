@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RecipeListService } from 'src/app/shared/recipeList.service';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { Ingredient } from 'src/app/shared/ingredient.model';
@@ -18,7 +18,7 @@ export class EditRecipeComponent implements OnInit {
   // If The item allowed to be edited
   editMode: boolean = false;
 
-  constructor(private route: ActivatedRoute, private recipeListService: RecipeListService) { }
+  constructor(private route: ActivatedRoute, private recipeListService: RecipeListService, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -70,6 +70,12 @@ export class EditRecipeComponent implements OnInit {
     }));
   }
 
+  onCancel() {
+    this.recipeForm.reset();
+    this.editMode = false;
+    this.router.navigate(['../'], { relativeTo: this.route });
+  }
+
   onSubmit() {
     // const newRecipe: Recipe = {
     //   name: this.recipeForm.value['name'],
@@ -82,9 +88,11 @@ export class EditRecipeComponent implements OnInit {
       this.recipeListService.updateRecipe(this.recipeID, this.recipeForm.value)
       this.recipeForm.reset();
       this.editMode = false;
+      this.router.navigate(['../'], { relativeTo: this.route });
     }
     else {
       this.recipeListService.setRecipt(this.recipeForm.value);
+      this.router.navigate(['../'], { relativeTo: this.route });
     }
   }
 

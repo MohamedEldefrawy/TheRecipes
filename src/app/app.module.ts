@@ -16,6 +16,8 @@ import { NoRecipeSelectedComponent } from './recipes/no-recipe-selected/no-recip
 import { EditRecipeComponent } from './recipes/edit-recipe/edit-recipe.component';
 import { RecipeListService } from './shared/recipeList.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     routing,
+    NgbModule,
     FormsModule,
     ReactiveFormsModule
   ],
