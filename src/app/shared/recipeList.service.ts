@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 export class RecipeListService {
 
     recipeChanged = new Subject<Recipe[]>();
+
     constructor(private shoppingListService: ShoppingListService) {
 
     }
@@ -43,4 +44,5 @@ export class RecipeListService {
         this.recipes.splice(index, 1);
         this.recipeChanged.next(this.recipes.slice());
     }
+
 }
