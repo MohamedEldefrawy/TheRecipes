@@ -9,12 +9,12 @@ import { RecipeDetailComponent } from './recipes//recipe-detail/recipe-detail.co
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { DropdownDirective } from './shared/dropdown.directive';
-import { ShoppingListService } from './shared/shoppingList.service';
+import { ShoppingListService } from './shopping-list/shoppingList.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { routing } from './app-routing-module';
 import { NoRecipeSelectedComponent } from './recipes/no-recipe-selected/no-recipe-selected.component';
 import { EditRecipeComponent } from './recipes/edit-recipe/edit-recipe.component';
-import { RecipeListService } from './shared/recipeList.service';
+import { RecipeListService } from './recipes/recipeList.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 

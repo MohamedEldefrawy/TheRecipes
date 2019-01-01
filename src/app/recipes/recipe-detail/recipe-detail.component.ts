@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Recipe } from "../recipe.model";
-import { RecipeListService } from "src/app/shared/recipeList.service";
+import { RecipeListService } from "src/app/recipes/recipeList.service";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
