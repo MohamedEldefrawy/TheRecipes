@@ -24,7 +24,7 @@ export class EditRecipeComponent implements OnInit {
 
       // Assign editMode to true if id exist
       this.editMode = params['id'] != null;
-    })
+    });
 
     this.initForm();
   }
@@ -89,7 +89,7 @@ export class EditRecipeComponent implements OnInit {
       this.router.navigate(['../'], { relativeTo: this.route });
     }
     else {
-      this.recipeListService.setRecipt(this.recipeForm.value);
+      this.recipeListService.setRecipe(this.recipeForm.value);
       this.router.navigate(['../'], { relativeTo: this.route });
     }
   }

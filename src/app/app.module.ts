@@ -16,7 +16,11 @@ import { NoRecipeSelectedComponent } from './recipes/no-recipe-selected/no-recip
 import { EditRecipeComponent } from './recipes/edit-recipe/edit-recipe.component';
 import { RecipeListService } from './recipes/recipeList.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpModule } from '@angular/http';
+import { DataStorgeService } from './shared/data-storage.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -40,9 +44,11 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     routing,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule,
+    HttpClientModule
   ],
-  providers: [ShoppingListService, RecipeListService],
+  providers: [ShoppingListService, RecipeListService, DataStorgeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
