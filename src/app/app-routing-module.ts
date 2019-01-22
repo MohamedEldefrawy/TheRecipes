@@ -7,6 +7,7 @@ import { NoRecipeSelectedComponent } from "./recipes/no-recipe-selected/no-recip
 import { RecipeDetailComponent } from "./recipes/recipe-detail/recipe-detail.component";
 import { EditRecipeComponent } from "./recipes/edit-recipe/edit-recipe.component";
 import { SignupComponent } from "./auth/signup/signup.component";
+import { SigninComponent } from "./auth/signin/signin.component";
 
 
 const appRouts: Routes = [
@@ -21,6 +22,7 @@ const appRouts: Routes = [
   { path: 'shoppingList', component: ShoppingListComponent },
   { path: 'not-found', component: PageNotFoundComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'signin', component: SigninComponent },
   { path: '**', redirectTo: '/not-found' },
 
 ];

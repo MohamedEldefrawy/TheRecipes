@@ -7,4 +7,12 @@ export class AuthService {
         console.log(error);
       });
   }
+
+  signin(name: string, password: string) {
+    firease.auth().signInWithEmailAndPassword(name, password).then((respons) => {
+      console.log(respons);
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
 }
