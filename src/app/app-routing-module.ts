@@ -6,20 +6,23 @@ import { Routes, RouterModule } from "@angular/router";
 import { NoRecipeSelectedComponent } from "./recipes/no-recipe-selected/no-recipe-selected.component";
 import { RecipeDetailComponent } from "./recipes/recipe-detail/recipe-detail.component";
 import { EditRecipeComponent } from "./recipes/edit-recipe/edit-recipe.component";
+import { SignupComponent } from "./auth/signup/signup.component";
 
 
 const appRouts: Routes = [
-    { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-    {
-        path: 'recipes', component: RecipesComponent, children: [
-            { path: '', component: NoRecipeSelectedComponent },
-            { path: 'new', component: EditRecipeComponent },
-            { path: ':id', component: RecipeDetailComponent },
-            { path: ':id/edit', component: EditRecipeComponent }]
-    },
-    { path: 'shoppingList', component: ShoppingListComponent },
-    { path: 'not-found', component: PageNotFoundComponent },
-    { path: '**', redirectTo: '/not-found' }
+  { path: '', redirectTo: '/recipes', pathMatch: 'full' },
+  {
+    path: 'recipes', component: RecipesComponent, children: [
+      { path: '', component: NoRecipeSelectedComponent },
+      { path: 'new', component: EditRecipeComponent },
+      { path: ':id', component: RecipeDetailComponent },
+      { path: ':id/edit', component: EditRecipeComponent }]
+  },
+  { path: 'shoppingList', component: ShoppingListComponent },
+  { path: 'not-found', component: PageNotFoundComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: '**', redirectTo: '/not-found' },
+
 ];
 
 export const routing = RouterModule.forRoot(appRouts);

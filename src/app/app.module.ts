@@ -20,6 +20,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpModule } from '@angular/http';
 import { DataStorgeService } from './shared/data-storage.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { AuthService } from './auth/auth-service';
 
 
 
@@ -37,7 +40,9 @@ import { HttpClientModule } from '@angular/common/http';
     RecipesComponent,
     PageNotFoundComponent,
     NoRecipeSelectedComponent,
-    EditRecipeComponent
+    EditRecipeComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpModule,
     HttpClientModule
   ],
-  providers: [ShoppingListService, RecipeListService, DataStorgeService],
+  providers: [ShoppingListService, RecipeListService, DataStorgeService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
