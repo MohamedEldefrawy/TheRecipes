@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AuthService } from './auth/auth-service';
+import { AuthGuardService } from './auth/auth-guard-service';
 
 
 
@@ -53,7 +54,11 @@ import { AuthService } from './auth/auth-service';
     HttpModule,
     HttpClientModule
   ],
-  providers: [ShoppingListService, RecipeListService, DataStorgeService,AuthService],
+  providers: [ShoppingListService,
+    RecipeListService,
+    DataStorgeService,
+    AuthService,
+    AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

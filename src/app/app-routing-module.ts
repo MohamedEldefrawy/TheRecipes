@@ -8,6 +8,7 @@ import { RecipeDetailComponent } from "./recipes/recipe-detail/recipe-detail.com
 import { EditRecipeComponent } from "./recipes/edit-recipe/edit-recipe.component";
 import { SignupComponent } from "./auth/signup/signup.component";
 import { SigninComponent } from "./auth/signin/signin.component";
+import { AuthGuardService } from "./auth/auth-guard-service";
 
 
 const appRouts: Routes = [
@@ -15,9 +16,15 @@ const appRouts: Routes = [
   {
     path: 'recipes', component: RecipesComponent, children: [
       { path: '', component: NoRecipeSelectedComponent },
-      { path: 'new', component: EditRecipeComponent },
+      {
+        path: 'new', component: EditRecipeComponent,
+        canActivate: [AuthGuardService]
+      },
       { path: ':id', component: RecipeDetailComponent },
-      { path: ':id/edit', component: EditRecipeComponent }]
+      {
+        path: ':id/edit', component: EditRecipeComponent,
+        canActivate: [AuthGuardService]
+      }]
   },
   { path: 'shoppingList', component: ShoppingListComponent },
   { path: 'not-found', component: PageNotFoundComponent },
